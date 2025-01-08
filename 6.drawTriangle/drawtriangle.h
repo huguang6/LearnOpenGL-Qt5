@@ -1,0 +1,30 @@
+#ifndef DRAWTRIANGLE_H
+#define DRAWTRIANGLE_H
+
+#include <QOpenGLWidget>
+#include <QOpenGLFunctions_3_3_Core>
+#include <QOpenGLShader>
+#include <QTime>
+
+class drawTriangle : public QOpenGLWidget
+{
+    Q_OBJECT
+
+public:
+    drawTriangle(QWidget *parent = NULL);
+    ~drawTriangle();
+
+protected:
+    virtual void initializeGL();
+    virtual void resizeGL(int w, int h);
+    virtual void paintGL();
+
+private:
+    GLuint vbo;
+    GLuint vao;
+    QOpenGLShaderProgram shaderProgram;
+    QOpenGLFunctions_3_3_Core *core;
+    QTime time{QTime::currentTime()};
+};
+
+#endif // DRAWTRIANGLE_H
